@@ -1,7 +1,7 @@
 <?php
 	global $wpdb;
 	
-	echo 'OKAY - '.$user;
+	
 	$fargs = array(
 		'numberposts' => -1,
 		'post_type'   => 'freelancer'
