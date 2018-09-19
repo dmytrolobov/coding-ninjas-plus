@@ -15,9 +15,10 @@
 	if ($fposts )
 	foreach( $fposts as $fpost ){
 		setup_postdata( $fpost );
-		$count = $wpdb->get_var( $wpdb->prepare("SELECT COUNT(*) FROM $wpdb->postmeta WHERE meta_key = '_freelancer' AND meta_value = '" . $fpost->ID ."';" ) );
+		$freelancer_id = $fpost->ID;
+		$count = $wpdb->get_var( $wpdb->prepare("SELECT COUNT(*) FROM $wpdb->postmeta WHERE meta_key = '_freelancer' AND meta_value = %d;", $freelancer_id ) );
 		if ( $count < 3 ) {
-			$freelancers .= '<option value="' . $fpost->ID . '">' . $fpost->post_title . '</option>';		
+			$freelancers .= '<option value="' . $freelancer_id . '">' . $fpost->post_title . '</option>';		
 		}
 		wp_reset_postdata();
 	}
